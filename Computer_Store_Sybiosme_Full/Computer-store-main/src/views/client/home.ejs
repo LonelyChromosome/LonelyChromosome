@@ -1,0 +1,60 @@
+<%- include('../partials/header') %>
+<section class="hero">
+  <div>
+    <p class="eyebrow">01 // SYBIOSME × APEX PC COMPONENT STORE</p>
+    <h1>Custom 3D Rigs in 10 Days & Linh Kiện Máy Tính Đỉnh Cao</h1>
+    <p>Trải nghiệm hiệu ứng cuộn 3D Halftone Scrollytelling chuẩn SYBIOSME (58,698 đa giác) hoặc tự chọn CPU, Mainboard, RAM, RTX 5090 kiểm tra tương thích ngay trong Smart PC Builder.</p>
+    <div class="hero-actions">
+      <a class="btn primary" href="/sybiosme-3d.html">🚀 Mở 3D SYBIOSME Scrollytelling & Workbench</a>
+      <a class="btn" href="/pc-builder">🧩 Mở Smart PC Builder</a>
+      <a class="btn" href="/products">🛍️ Xem 16 Linh Kiện</a>
+    </div>
+  </div>
+  <div class="hero-rig">
+    <img src="/uploads/hw_gpu_rtx5090.jpg" alt="ASUS ROG Astral RTX 5090 OC">
+    <strong>ASUS ROG Astral RTX 5090 OC 32GB</strong>
+    <span style="color:var(--muted); font-size:13px;">Blackwell GDDR7 • Live in 10 Days</span>
+  </div>
+</section>
+
+<section style="margin-top:28px; border:1px solid var(--line); border-radius:24px; overflow:hidden; background:#0c0c0b;">
+  <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 20px; border-bottom:1px solid var(--line);">
+    <strong style="font-size:13px; color:#f22f1a; letter-spacing:0.06em;">✦ LIVE EMBEDDED 3D WEBGL2 SCROLLYTELLING STAGE (SYBIOSME EDITION)</strong>
+    <a class="btn small primary" href="/sybiosme-3d.html" target="_blank">Mở Toàn Màn Hình ↗</a>
+  </div>
+  <iframe src="/sybiosme-3d.html" style="width:100%; height:640px; border:0; display:block;" title="SYBIOSME 3D PC Scrollytelling"></iframe>
+</section>
+
+<section class="section-head">
+  <h2>Danh mục linh kiện</h2>
+  <a href="/products">Xem tất cả →</a>
+</section>
+<div class="category-row">
+  <% categories.forEach((category) => { %>
+    <a class="category-chip" href="/products?category=<%= category %>"><%= category %></a>
+  <% }) %>
+</div>
+
+<section class="section-head">
+  <h2>Linh kiện Flagship & Nổi bật</h2>
+</section>
+<div class="product-grid">
+  <% featuredProducts.forEach((product) => { %>
+    <article class="product-card">
+      <img src="<%= product.image %>" alt="<%= product.name %>">
+      <p class="category"><%= product.category %> - <%= product.brand %></p>
+      <h3><%= product.name %></h3>
+      <p style="margin:0; font-size:13px; color:var(--muted);">Hiệu năng: <strong><%= product.performance %>/100</strong> • Kho: <%= product.stock %></p>
+      <p class="price"><%= product.price.toLocaleString('vi-VN') %>đ</p>
+      <div class="card-actions">
+        <a class="btn small" href="/products/<%= product.id %>">Chi tiết</a>
+        <% if (user) { %>
+          <form action="/cart/add/<%= product.id %>" method="post"><button class="btn small primary" type="submit">+ Thêm giỏ</button></form>
+        <% } else { %>
+          <a class="btn small primary" href="/login">Đăng nhập mua</a>
+        <% } %>
+      </div>
+    </article>
+  <% }) %>
+</div>
+<%- include('../partials/footer') %>
